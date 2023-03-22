@@ -1,0 +1,319 @@
+:root {
+  --white: #ffffff;
+  --pastel-green: #fff4d4;
+  --aqua-green: #d4e9e2;
+  --lightish-green: #00754a;
+  --green: #1e3932;
+  --light-green: #a0c292;
+  --black: #000000;
+  --somewhat-pink: #f6bfd9;
+  --hero-font-size: 3.5rem;
+  --normal-text-font-size: 1rem;
+  --based-on-color-scheme: #22211f;
+  --card-width: 75%;
+  --card-height: 75%;
+  --card-padding: .5rem 1.5rem;
+  --navbar-padding: 1rem 2.5rem;
+  --navbar-height: clamp(3rem, 6rem, 7rem);
+  --color-scheme-controller-container-width: 4.5rem;
+  --color-scheme-controller-container-height: 50%;
+  --transition-for-all: 250ms ease;
+  --background-color-of-app-on-color-scheme: #00754a;
+  --box-shadow-based-on-color-scheme: 0 .05rem .45rem 0 black;
+  --width-of-toolbox: 40%;
+  --tool-box-font-size: 2rem;
+}
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.light {
+  background-color: var(--white);
+  color: var(--black);
+  transition: var(--transition-for-all);
+}
+
+.light:hover {
+  transition: var(--transition-for-all);
+  background-color: #f1ededd8;
+}
+
+.dark {
+  transition: var(--transition-for-all);
+  color: var(--white);
+  background-color: var(--black);
+}
+
+.dark:hover {
+  transition: var(--transition-for-all);
+  background-color: #141414e1;
+}
+
+.translate-x-to-right {
+  transform: translateX(139%);
+}
+
+body {
+  scroll-behavior: smooth;
+  transition: var(--transition-for-all);
+  background: var(--based-on-color-scheme);
+  font-family: 'Times New Roman', Times, serif;
+}
+
+#root {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  font-size: var(--normal-text-font-size);
+  position: relative;
+}
+
+.toolbox {
+  position: absolute;
+  background-color: var(--based-on-color-scheme);
+  width: var(--width-of-toolbox);
+  height: 3rem;
+  border-radius: 1rem;
+  align-items: center;
+  justify-content: center;
+  top: 1rem;
+  font-size: var(--tool-box-font-size);
+  font-weight: extrabold;
+  color: var(--based-on-color-scheme-text-color);
+}
+
+.animate-shake-button {
+  animation: shake .25s linear forwards;
+}
+
+.App {
+  width: var(--card-width);
+  min-height: var(--card-height);
+  background-color: var(--background-color-of-app-on-color-scheme);
+  border-radius: 1rem;
+  padding: var(--card-padding);
+}
+
+.nav-bar {
+  text-transform: uppercase;
+  width: 100%;
+  height: var(--navbar-height);
+  padding: var(--navbar-padding);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+h1 {
+  font-size: var(--hero-font-size);
+}
+
+.hidden {
+  display: none;
+}
+
+.flex {
+  display: flex;
+}
+
+.nav-bar .dark-light-mode-icon-container {
+  cursor: pointer;
+  width: var(--color-scheme-controller-container-width);
+  height: var(--color-scheme-controller-container-height);
+  border-radius: 1rem;
+  position: relative;
+  padding: 0 .15rem;
+}
+
+.nav-bar .dark-light-mode-icon-container > .dark-light-mode-icon {
+  width: 40%;
+  height: 90%;
+  border-radius: 100%;
+  position: absolute;
+  top: .1rem;
+  transition: var(--transition-for-all);
+  box-shadow:  var(--box-shadow-based-on-color-scheme);
+}
+
+main {
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  gap: .75rem;
+  align-items: flex-start;
+  justify-content: center;
+  border: 2px solid black;
+  border-radius: .5rem;
+  padding: var(--navbar-padding);
+}
+
+.input-container,
+.output-container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  gap: .25rem;
+  height: 25%;
+  width: 100%;
+}
+
+.input-container > .text-area,
+.output-container > .text-area {
+  height: 75%;
+  resize: none;
+  width: 80%;
+  border-radius: .25rem;
+  padding: .5rem .5rem;
+}
+
+.input-container > .text-area::placeholder,
+.output-container > .text-area {
+  font-size: var(--normal-text-font-size);
+}
+
+.input-container > button {
+  width: 15%;
+  height: 24.5%;
+  border: 2px solid black;
+  border-radius: .25rem;
+  cursor: pointer;
+}
+
+.button-in-dark {
+  background-color: transparent;
+  transition: var(--transition-for-all);
+  box-shadow: 0 .25rem .25rem .05rem black;
+}
+
+.button-in-light {
+  background-color: var(--white);
+  transition: var(--transition-for-all);
+  box-shadow: 0 .25rem .25rem .05rem white;
+}
+
+.button-in-dark:hover {
+  color: var(--black);
+  background-color: rgb(243, 240, 240);
+  border-color: rgb(0, 0, 0);
+  box-shadow: 0 .15rem .15rem .05rem rgb(0, 0, 0);
+}
+
+.button-in-light:hover {
+  color: var(--white);
+  background-color: rgb(17, 17, 17);
+  border-color: white;
+  box-shadow: 0 .15rem .15rem .05rem white;
+}
+
+.input-container > button:active {
+  transform: translateY(1px) scale(.97);
+}
+
+.button-in-light:active {
+  box-shadow: 0 0.05rem 0.1rem 0 black;
+}
+
+.button-in-dark:active {
+  box-shadow: 0 0.05rem 0.1rem 0 white;
+}
+
+@media (min-width: 769px) and (max-width: 1050px) {
+  :root {
+    --hero-font-size: 2.25rem;
+    --card-width: 75%;
+    --card-height: 65%;
+    --normal-text-font-size: .98rem;
+    --card-padding: 1rem .5rem;
+    --navbar-padding: .5rem 1rem;
+    --navbar-height: clamp(3rem, 5rem, 7rem);
+    --color-scheme-controller-container-width: 3.5rem;
+    --color-scheme-controller-container-height: 35%;
+    --width-of-toolbox: 65%;
+    --tool-box-font-size: 1.75rem;
+  }
+}
+
+@media (min-width: 400px) and (max-width: 769px) {
+  .nav-bar {
+    gap: .75rem;
+  }
+  .input-container > button {
+    width: 25%;
+  }
+  :root {
+    --hero-font-size: 1.9rem;
+    --card-width: 90%;
+    --card-height: 65%;
+    --normal-text-font-size: .98rem;
+    --card-padding: .5rem .5rem;
+    --navbar-padding: .5rem .75rem;
+    --navbar-height: clamp(3rem, 5.75rem, 7rem);
+    --color-scheme-controller-container-width: 3.25rem;
+    --color-scheme-controller-container-height: 30%;
+    --width-of-toolbox: 85%;
+    --tool-box-font-size: 1.5rem;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .dark-light-mode-container {
+    width: 20%;
+  }
+  .nav-bar {
+    gap: .25rem;
+  }
+  .input-container > .text-area,
+  .output-container > .text-area {
+    width: 100%;
+  }
+  h2 {
+    font-size: var(--hero-font-size);
+  }
+  .input-container > button {
+    width: 35%;
+  }
+  :root {
+    --hero-font-size: 1.5rem;
+    --card-width: 95%;
+    --card-height: 70%;
+    --normal-text-font-size: .98rem;
+    --card-padding: .25rem .5rem;
+    --navbar-padding: .5rem .5rem;
+    --navbar-height: clamp(3rem, 5.5rem, 7rem);
+    --color-scheme-controller-container-width: 3rem;
+    --color-scheme-controller-container-height: 30%;
+    --width-of-toolbox: 100%;
+    --tool-box-font-size: 1rem;
+  }
+
+}
+
+@keyframes shake {
+  0% {
+    transform: translate(-2.5%, 0);
+  }
+  20% {
+    transform: translate(2.5%, 0);
+  }
+  40% {
+    transform: translate(-4.5%, 0);
+  }
+  50% {
+    transform: translate(4.5%, 0);
+  }
+  80% {
+    transform: translate(-4.5%, 0);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
